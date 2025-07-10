@@ -1,0 +1,33 @@
+{
+  "name": "04-agentic-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev-express\" \"npm run dev-mastra\"",
+    "dev-express": "PORT=3030 tsx --watch src/index.ts --watch-dir src",
+    "dev-mastra": "PORT=4111 mastra dev",
+    "build": "mastra build",
+    "start": "tsx src/index.ts"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.12",
+    "concurrently": "^9.2.0",
+    "mastra": "^0.10.12",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^1.3.23",
+    "@mastra/core": "^0.10.12",
+    "@mastra/mcp": "^0.10.6",
+    "express": "^5.1.0",
+    "zod": "^3.25.76"
+  }
+}
