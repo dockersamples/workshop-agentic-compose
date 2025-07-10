@@ -40,6 +40,3 @@ In order to run this workshop, you need the following:
 > [!IMPORTANT]
 > When asked to run commands in the workshop, you will use the terminal **inside** this VS Code environment.
 
-## Workshop materials
-
-Once you have the workshop environment up and running, you can 
