@@ -3,33 +3,24 @@ models:
     model: ai/gemma3-qat
 
 services:
-  project-setup:
-    image: michaelirwin244/workshop-poc:setup
-    pull_policy: always
-    volumes:
-      - project:/project
-    environment:
-      PROJECT_CLONE_URL: https://github.com/dockersamples/workshop-agentic-compose.git
-
-
   workspace:
     image: michaelirwin244/workshop-environment
     pull_policy: always
     command: /home/coder/project
     ports:
       - 8085:8085
-    depends_on:
-      project-setup:
-        condition: service_completed_successfully
+    use_api_socket: true
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock    
-      # - project:/home/coder/project
       - ./:/home/coder/project
     environment:
       MODEL_RUNNER_HOST: http://model-runner.docker.internal
       OPENAI_BASE_URL: http://model-runner.docker.internal/engines/v1
       OPENAI_API_KEY: not-required
       OPENAI_MODEL: ai/gemma3-qat
+      MCPGATEWAY_ENDPOINT: http://mcp-gateway:8811/sse
+    post_start:
+      - command: chown 1000:1000 /var/run/docker.sock
+        user: root
 
   visual-chatbot:
     image: mikesir87/visual-chatbot
@@ -43,3 +34,7 @@ services:
 
 volumes:
   project:
+
+networks:
+  default:
+    name: workshop
