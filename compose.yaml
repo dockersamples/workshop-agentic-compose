@@ -9,9 +9,12 @@ services:
     command: /home/coder/project
     ports:
       - 8085:8085
-    use_api_socket: true
+      - 3030:3030 # Used in agentic app running
+      - 4111:4111 # Used in agentic app running (by Mastra)
+    # use_api_socket: true
     volumes:
       - ./:/home/coder/project
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       MODEL_RUNNER_HOST: http://model-runner.docker.internal
       OPENAI_BASE_URL: http://model-runner.docker.internal/engines/v1
