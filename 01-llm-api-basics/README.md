@@ -37,7 +37,7 @@ In this segment, you'll start with learning about the various messages in the st
     This is because the entire stack of messages is being submitted for each and every interaction with the model.
 
 > [!IMPORTANT]
-> Models have no notion of memory or history on their own - **they are statless.** All messages in the stack are sent to the API in order to support history and context. This is why context length is an important consideration.
+> Models have no notion of memory or history on their own - **they are stateless.** All messages in the stack are sent to the API in order to support history and context. This is why context length is an important consideration.
 
 ## Segment Two: The system prompt
 
