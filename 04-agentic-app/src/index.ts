@@ -14,7 +14,7 @@ app.get('/joke', async (req, res) => {
     const agent = mastra.getAgent("jokeAgent");
 
     try {
-        const result = await agent.generate(`Tell me a joke about ${city}?`);
+        const result = await agent.generate(`Tell me a joke about ${city}`);
         return res.json({ joke: result.text });
     } catch (error) {
         console.error("Error generating joke:", error);
