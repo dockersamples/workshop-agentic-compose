@@ -9,6 +9,8 @@ services:
     command: /home/coder/project
     ports:
       - 8085:8085
+      - 6274:6274 # Used by MCP Inspector
+      - 6277:6277 # Used by MCP Inspector
       - 3030:3030 # Used in agentic app running
       - 4111:4111 # Used in agentic app running (by Mastra)
     # use_api_socket: true
